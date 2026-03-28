@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI & Smart Home</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+:root {
+    --primary: linear-gradient(135deg,#e6ccb2,#d2b48c,#c2a383);
+}
+
+/* Body */
+body{
+    font-family:'Segoe UI',Tahoma;
+    margin:0;
+    direction:rtl;
+    overflow-x:hidden;
+    background: linear-gradient(-45deg,#f5e6d3,#e8d3b9,#d9c2a3,#f3e2cc);
+    background-size:400% 400%;
+    animation:bgMove 12s ease infinite;
+}
+
+@keyframes bgMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* Header */
+header{
+    background:var(--primary);
+    height:250px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#4b3b2a;
+}
+
+/* Container */
+.container{
+    max-width:1100px;
+    margin:-60px auto 50px;
+    padding:20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+/* Boxes العادية */
+.box{
+    background:rgba(255,255,255,0.95);
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+    color:#3e2f1c;
+    box-shadow:0 0 20px rgba(180,140,100,0.4);
+    opacity:0;
+    transform:translateY(40px);
+    transition:0.3s;
+    cursor:pointer;
+}
+
+.box i{
+    font-size:40px;
+    margin-bottom:15px;
+    color:#b08968;
+}
+
+/* Animation */
+.visible{
+    animation:fadeInUp 0.8s forwards;
+}
+@keyframes fadeInUp{
+0%{opacity:0; transform:translateY(40px);}
+100%{opacity:1; transform:translateY(0);}
+}
+
+/* Robot */
+.robot-section{
+    text-align:center;
+    padding:50px;
+}
+
+.robot-img{
+    max-width:500px;
+    width:100%;
+    filter:
+    drop-shadow(0 0 15px rgba(210,180,140,0.8))
+    drop-shadow(0 0 30px rgba(214, 195, 170, 0.5));
+    animation:float 4s ease-in-out infinite;
+}
+@keyframes float{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-20px);}
+}
+
+/* Box 3D */
+#view-3d{
+    width: 100%;        /* نفس عرض البوكسات العادية */
+    min-height: 150px;  /* الطول أقل */
+    margin:0;           /* تتبع الشبكة */
+}
+
+/* 3D Section */
+#house-3d-section {
+    width: 100%;
+    height: 600px;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    margin-top: 20px;
+}
+
+/* Footer / Social */
+footer{
+    padding:40px;
+    text-align:center;
+    background:rgba(255,255,255,0.9);
+}
+.social-links a{
+    font-size:28px;
+    margin:0 15px;
+    color:#7f5539;
+    transition:0.3s;
+}
+.social-links a:hover{
+    transform:scale(1.2);
+    color:#b08968;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>AI & Smart Home</h1>
+</header>
+
+<!-- Main Boxes -->
+<div class="container">
+    <div class="box" data-link="about.html">
+        <i class="fas fa-info-circle"></i>
+        <h3>عن المشروع</h3>
+    </div>
+    <div class="box" data-link="goals.html">
+        <i class="fas fa-bullseye"></i>
+        <h3>هدف المشروع</h3>
+    </div>
+    <div class="box" data-link="structure.html">
+        <i class="fas fa-project-diagram"></i>
+        <h3>هيكل المشروع</h3>
+    </div>
+    <div class="box" data-link="users.html">
+        <i class="fas fa-user-friends"></i>
+        <h3>الفئات المستهدفة</h3>
+    </div>
+</div>
+
+<!-- Box 3D أسفل البوكسات العادية -->
+<div class="container">
+    <div class="box" id="view-3d">
+        <i class="fas fa-cube"></i>
+        <h3>عرض تصميم المنزل 3D</h3>
+    </div>
+</div>
+
+<!-- Robot Section -->
+<div class="robot-section">
+<img src="robot.jpeg" class="robot-img">
+<h2>Smart Living Powered by AI</h2>
+</div>
+
+<!-- 3D Section -->
+<div id="house-3d-section"></div>
+
+<!-- Three.js Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.157.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.157.0/examples/js/loaders/GLTFLoader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.157.0/examples/js/controls/OrbitControls.js"></script>
+
+<script>
+// Animate boxes & links
+window.addEventListener('DOMContentLoaded', ()=>{
+    const boxes = document.querySelectorAll('.box');
+
+    boxes.forEach((box,index)=>{
+        setTimeout(()=>{ box.classList.add('visible'); }, index*300);
+
+        box.addEventListener('click', ()=>{
+            if(box.id === 'view-3d') return;
+            const link = box.getAttribute('data-link');
+            if(link) window.location.href = link;
+        });
+    });
+
+    // Open 3D
+    const view3DBox = document.getElementById('view-3d');
+    view3DBox.onclick = ()=>{
+        const section = document.getElementById('house-3d-section');
+        section.style.display='block';
+        setTimeout(()=>{ section.style.opacity = '1'; }, 100);
+        init3D();
+        section.scrollIntoView({behavior:'smooth'});
+    }
+});
+
+// Three.js 3D
+function init3D(){
+    if(window.renderer) return;
+
+    const container=document.getElementById('house-3d-section');
+    const scene=new THREE.Scene();
+    const camera=new THREE.PerspectiveCamera(75,container.clientWidth/container.clientHeight,0.1,1000);
+    const renderer=new THREE.WebGLRenderer({antialias:true});
+    window.renderer=renderer;
+    renderer.setSize(container.clientWidth,container.clientHeight);
+    container.appendChild(renderer.domElement);
+
+    // Lights
+    const ambientLight = new THREE.AmbientLight(0xffffff,0.8);
+    scene.add(ambientLight);
+    const directionalLight = new THREE.DirectionalLight(0xffffff,0.6);
+    directionalLight.position.set(10,20,10);
+    scene.add(directionalLight);
+
+    // Controls
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.screenSpacePanning = false;
+    controls.minDistance = 1;
+    controls.maxDistance = 50;
+    controls.maxPolarAngle = Math.PI/2;
+
+    // Load model
+    const loader = new THREE.GLTFLoader();
+    loader.load('assets/models/house.glb',(gltf)=>{
+        scene.add(gltf.scene);
+    },  aundefined, (error)=>{ console.error(error); });
+
+    camera.position.set(5,2,5);
+
+    function animate(){
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene,camera);
+    }
+    animate();
+
+    window.addEventListener('resize', ()=>{
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.clientWidth, container.clientHeight);
+    });
+}
+</script>
+
+<!-- Footer / Social Links -->
+<footer>
+<div class="social-links">
+<a href="https://facebook.com/YOUR_PAGE" target="_blank"><i class="fab fa-facebook"></i></a>
+<a href="https://instagram.com/YOUR_PAGE" target="_blank"><i class="fab fa-instagram"></i></a>
+<a href="https://linkedin.com/in/YOUR_PAGE" target="_blank"><i class="fab fa-linkedin"></i></a>
+</div>
+</footer>
+
+</body>
+</html>

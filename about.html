@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>عن المشروع</title>
+
+<style>
+
+body{
+font-family: 'Segoe UI';
+margin:0;
+background: linear-gradient(135deg, #f5efe6, #e8dccb, #d6c3a3);
+overflow-x:hidden;
+}
+
+/* موجات */
+body::before, body::after{
+content:"";
+position:fixed;
+width:200%;
+height:200px;
+background:rgba(193, 168, 135, 0.5);
+border-radius:50%;
+left:-50%;
+z-index:0;
+}
+
+body::before{
+top:0;
+animation:wave 10s infinite linear;
+}
+
+body::after{
+bottom:0;
+animation:wave 14s infinite linear reverse;
+}
+
+@keyframes wave{
+0%{transform:translateX(0);}
+100%{transform:translateX(50%);}
+}
+
+header{
+background: linear-gradient(135deg,#d2b48c,#c2a27a);
+color:#4b3f2f;
+text-align:center;
+padding:50px;
+position:relative;
+z-index:1;
+}
+
+.container{
+max-width:900px;
+margin:40px auto;
+background:white;
+padding:40px;
+border-radius:20px;
+box-shadow:0 15px 30px rgba(0,0,0,0.1);
+line-height:2;
+font-size:18px;
+position:relative;
+z-index:1;
+}
+
+h1{
+margin:0;
+font-size:32px;
+}
+
+p{
+margin-bottom:20px;
+color:#4b3f2f;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>عن المشروع</h1>
+</header>
+
+<div class="container">
+
+<p>
+مشروع AI & Smart Home هو نظام منزل ذكي متطور يهدف إلى تطوير فكرة الـ Smart Home بشكل أوسع وأكثر ذكاء من الأنظمة التقليدية، وذلك من خلال دمج تقنيات إنترنت الأشياء (IoT) مع الذكاء الاصطناعي (AI) لتقديم تجربة منزل أكثر راحة وأمان وسهولة.
+</p>
+
+<p>
+يعتمد المشروع على ربط الأجهزة المنزلية مثل الإضاءة، التكييف، الأبواب، الحساسات والكاميرات مع نظام مركزي قادر على التحكم بها ومراقبة حالتها بشكل مستمر، بالإضافة إلى تحليل البيانات واتخاذ قرارات تلقائية حسب احتياج المستخدم وروتينه اليومي.
+</p>
+
+<p>
+ومن أهم مميزات المشروع أنه سيحتوي على تطبيق (App) خاص يتيح للمستخدم التحكم بجميع أجهزة المنزل بسهولة ومن مكان واحد، مما يساعد على حل المشاكل التي قد تحدث أثناء الاستخدام ويجعل التحكم أكثر سلاسة وتنظيماً.
+</p>
+
+<p>
+كما سيتم إضافة ChatBot ذكي داخل التطبيق ليعمل كمساعد شخصي للمستخدم، بحيث يمكنه الاستفسار عن أي شيء، طلب تشغيل الأجهزة، معرفة حالة المنزل، أو الحصول على حلول ونصائح عند حدوث أي مشكلة، مما يجعل تجربة الاستخدام أبسط وأسرع حتى للأشخاص غير المتخصصين.
+</p>
+
+</div>
+
+</body>
+</html>

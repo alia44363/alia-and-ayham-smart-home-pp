@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>هيكل المشروع</title>
+
+<style>
+
+body{
+font-family:'Segoe UI';
+margin:0;
+background: linear-gradient(135deg, #f5e6d3, #e8d3b9, #d9c2a3);
+overflow-x:hidden;
+}
+
+/* موجات */
+body::before, body::after{
+content:"";
+position:fixed;
+width:200%;
+height:200px;
+background:rgba(255,255,255,0.2);
+border-radius:50%;
+left:-50%;
+z-index:0;
+}
+
+body::before{
+top:0;
+animation:wave 10s infinite linear;
+}
+
+body::after{
+bottom:0;
+animation:wave 14s infinite linear reverse;
+}
+
+@keyframes wave{
+0%{transform:translateX(0);}
+100%{transform:translateX(50%);}
+}
+
+header{
+background: linear-gradient(135deg,#d2b48c,#c2a383);
+color:#4b3b2a;
+text-align:center;
+padding:50px;
+position:relative;
+z-index:1;
+}
+
+.container{
+max-width:900px;
+margin:40px auto;
+background:rgba(255,255,255,0.9);
+padding:40px;
+border-radius:20px;
+box-shadow:0 0 25px rgba(180,140,100,0.5);
+line-height:2;
+font-size:18px;
+position:relative;
+z-index:1;
+transition:0.3s;
+}
+
+.container:hover{
+box-shadow:0 0 40px rgba(180,140,100,0.8);
+transform:scale(1.01);
+}
+
+h1{
+margin:0;
+font-size:32px;
+}
+
+ul{
+list-style:none;
+padding:0;
+}
+
+li{
+margin:15px 0;
+padding:15px;
+background:rgba(210,180,140,0.2);
+border-radius:10px;
+transition:0.3s;
+color:#3e2f1c;
+}
+
+li:hover{
+background:#f3e2cc;
+transform:translateX(-5px);
+}
+
+p{
+margin-bottom:20px;
+color:#3e2f1c;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>هيكل المشروع</h1>
+</header>
+
+<div class="container">
+
+<p>
+يتكون المشروع من عدة أجزاء مترابطة تعمل معاً لتحقيق أفضل أداء وتقديم تجربة منزل ذكي متكاملة:
+</p>
+
+<ul>
+
+<li><strong>أجهزة وحساسات (Sensors & Devices):</strong> مثل حساس الحركة، الحرارة، الغاز، الإضاءة، والرطوبة، وهي المسؤولة عن جمع البيانات من البيئة داخل المنزل.</li>
+
+<li><strong>وحدة تحكم رئيسية (Controller):</strong> مثل Arduino أو ESP32، حيث تقوم بالتحكم في الأجهزة واستقبال البيانات من الحساسات وتنفيذ الأوامر.</li>
+
+<li><strong>السيرفر أو قاعدة البيانات (Server & Database):</strong> يتم استخدامها لتخزين البيانات ومتابعة حالة الأجهزة بشكل مستمر.</li>
+
+<li><strong>واجهة المستخدم (Mobile / Web App):</strong> تتيح للمستخدم التحكم بالمنزل بسهولة ومراقبة جميع الأجهزة بشكل مباشر من أي مكان.</li>
+
+<li><strong>نظام الذكاء الاصطناعي (AI System):</strong> يقوم بتحليل البيانات والتنبؤ بسلوك المستخدم، بالإضافة إلى تنفيذ أوامر ذكية وتقديم اقتراحات لتحسين الأداء.</li>
+
+</ul>
+
+<p>
+من خلال هذا الهيكل، يعمل النظام كوحدة متكاملة تجمع بين الأجهزة والبرمجيات لتوفير تجربة ذكية، سهلة، وآمنة للمستخدم.
+</p>
+
+</div>
+
+</body>
+</html>

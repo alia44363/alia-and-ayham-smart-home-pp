@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>هدف المشروع</title>
+
+<style>
+
+body{
+font-family:'Segoe UI';
+margin:0;
+background: linear-gradient(135deg, #f5e6d3, #e8d3b9, #d9c2a3);
+overflow-x:hidden;
+}
+
+/* موجات */
+body::before, body::after{
+content:"";
+position:fixed;
+width:200%;
+height:200px;
+background:rgba(255,255,255,0.2);
+border-radius:50%;
+left:-50%;
+z-index:0;
+}
+
+body::before{
+top:0;
+animation:wave 10s infinite linear;
+}
+
+body::after{
+bottom:0;
+animation:wave 14s infinite linear reverse;
+}
+
+@keyframes wave{
+0%{transform:translateX(0);}
+100%{transform:translateX(50%);}
+}
+
+header{
+background: linear-gradient(135deg,#d2b48c,#c2a383);
+color:#4b3b2a;
+text-align:center;
+padding:50px;
+position:relative;
+z-index:1;
+}
+
+.container{
+max-width:900px;
+margin:40px auto;
+background:rgba(255,255,255,0.9);
+padding:40px;
+border-radius:20px;
+box-shadow:0 0 25px rgba(180,140,100,0.5);
+line-height:2;
+font-size:18px;
+position:relative;
+z-index:1;
+transition:0.3s;
+}
+
+.container:hover{
+box-shadow:0 0 40px rgba(180,140,100,0.8);
+transform:scale(1.01);
+}
+
+h1{
+margin:0;
+font-size:32px;
+}
+
+ul{
+list-style:none;
+padding:0;
+}
+
+li{
+margin:15px 0;
+padding:15px;
+background:rgba(210,180,140,0.2);
+border-radius:10px;
+transition:0.3s;
+color:#3e2f1c;
+}
+
+li:hover{
+background:#f3e2cc;
+transform:translateX(-5px);
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>هدف المشروع</h1>
+</header>
+
+<div class="container">
+
+<ul>
+
+<li>إنشاء نظام منزل ذكي متكامل لا يقتصر على التحكم اليدوي فقط بل يعتمد على حلول ذكية متقدمة.</li>
+
+<li>توفير الطاقة وتقليل الاستهلاك الكهربائي من خلال أنظمة ذكية تدير الأجهزة بكفاءة.</li>
+
+<li>رفع مستوى الأمان داخل المنزل باستخدام الحساسات والكاميرات والتنبيهات الفورية.</li>
+
+<li>تسهيل التحكم بالأجهزة المنزلية من خلال الهاتف أو الأوامر الصوتية بكل سهولة.</li>
+
+<li>تمكين المنزل من التعلم من المستخدم والتكيف مع روتينه اليومي بشكل تلقائي.</li>
+
+<li>تقديم تنبيهات فورية عند حدوث أي أمر غير طبيعي مثل تسرب الغاز أو وجود حركة مشبوهة.</li>
+
+</ul>
+
+</div>
+
+</body>
+</html>
